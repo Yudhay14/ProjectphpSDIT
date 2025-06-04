@@ -1,5 +1,10 @@
 <?php
+session_start();
 
+if(!isset($_SESSION['ssLogin'])){
+    header ("location:../Project_sekolah_SDIT/loginpage/login.php");
+    exit;
+}
 require_once "../config.php";
 $title = "Tambah User | SDIT As-Salam";
 require_once "../template/header.php";

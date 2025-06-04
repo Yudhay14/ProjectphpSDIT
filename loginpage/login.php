@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['ssLogin'])){
+    header ("location:../Project_sekolah_SDIT/loginpage/login.php");
+    exit;
+}
 
 require_once "../config.php";
 
@@ -68,7 +74,7 @@ input:-webkit-autofill {
                 <div class="container">
                     <div class="row justify-content-center" style="min-height: 100vh; align-items: center;">
                         <div class="col-7">
-                            <img src="../asset/image/Logo.png" class="w-55" alt="">
+                            <img src="../asset/image/logologin.png" class="w-55" style="margin-right: 20px;" alt="">
                         </div>
                         <div class="col-lg-5">
                             <div class="card-header">
@@ -77,7 +83,7 @@ input:-webkit-autofill {
                                     LOGIN</h2>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="proses-login.php" method="POST">
                                     <div class="form-floating mb-4 mt-5">
                                         <input class="form-control rounded-pill" id="username" type="text"
                                             name="username" placeholder="Username" pattern="[A-Za-z0-9]{3,}"

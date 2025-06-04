@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['ssLogin'])){
+    header ("location:../Project_sekolah_SDIT/loginpage/login.php");
+    exit;
+}
 
 require_once "../config.php";
 $title = "Profile Sekolah | SDIT As-Salam";
