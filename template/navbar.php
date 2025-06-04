@@ -17,7 +17,8 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Profile User</a></li>
-                    <li><a class="dropdown-item" href="#!">Profile Sekolah</a></li>
+                    <li><a class="dropdown-item" href="<?= $main_url ?>Sekolah/profile-sekolah.php">Profile Sekolah</a>
+                    </li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>

@@ -35,7 +35,12 @@ function uploadimg($url){
         die;
     }
     //generate nama file gMBr
-    $namafilebaru = rand(10, 1000) . '-' . $namafile;
+    if($url = 'profile-sekolah.php'){
+        $namafilebaru = rand(10, 50) . '-bgSkLogin' . $fileExtension;
+    } else {
+        $namafilebaru = rand(10, 1000) . '-' . $namafile;
+
+    }
 
     //upload gmbar
     move_uploaded_file($tmp, "../asset/image/" . $namafilebaru);
