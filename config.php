@@ -36,7 +36,7 @@ function uploadimg($url){
     }
     //generate nama file gMBr
     if($url = 'profile-sekolah.php'){
-        $namafilebaru = rand(10, 50) . '-bgSkLogin' . $fileExtension;
+        $namafilebaru = rand(10, 50) . '-bgSkLogin.' . $fileExtension;
     } else {
         $namafilebaru = rand(10, 1000) . '-' . $namafile;
 
