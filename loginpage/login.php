@@ -1,7 +1,6 @@
 <?php
 
 require_once "../config.php";
-$title = "Login | SDIT As-Salam IGS";
 
 ?>
 
@@ -21,7 +20,34 @@ $title = "Login | SDIT As-Salam IGS";
 </head>
 <style>
 .bg-body-login {
-    background-image: url("../asset/image/bg-test.jpg");
+    background-image: url("../asset/image/bg-test2.jpg");
+}
+
+.form-control {
+    background-color: transparent !important;
+    border: 2px solid rgba(0, 123, 255, 1);
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    background-color: transparent !important;
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.7);
+    color: white;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 9999s ease-in-out 0s;
+    caret-color: white;
 }
 </style>
 
@@ -30,7 +56,6 @@ $title = "Login | SDIT As-Salam IGS";
         <!-- Navbar Brand-->
         <a href="" class="m-3"><input type="image" src="<?= $main_url ?>asset/image/logohome.png" alt=""></a>
         <a class="navbar-brand text-start fw-bold text-primary">SDIT As-Salam IGS</a>
-        <!-- Sidebar Toggle-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <a href="" style="text-decoration: none;" class="fw-bold px-3">Informasi Sekolah</a>
             <a href="" style="text-decoration: none;" class="fw-bold px-3">PPDB</a>
@@ -43,36 +68,34 @@ $title = "Login | SDIT As-Salam IGS";
                 <div class="container">
                     <div class="row justify-content-center" style="min-height: 100vh; align-items: center;">
                         <div class="col-7">
-                            <img src="../asset/image/Logo.png" class="w-50" alt="">
-                            <img src="../asset/image/bg-sekolah.jpg" class="w-50 rounded-pill shadow-lg" alt="">
+                            <img src="../asset/image/Logo.png" class="w-55" alt="">
                         </div>
                         <div class="col-lg-5">
-                            <div class="card shadow-lg border-0 rounded-lg mt-7" style="height: 600px;">
-                                <div class="card-header">
-                                    <h3 class="text-center text-primary font-weight-light my-4"
-                                        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                                        Login SDIT As-Salam</h3>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="form-floating mb-4 mt-5">
-                                            <input class="form-control" id="username" type="text" name="username"
-                                                placeholder="Username" pattern="[A-Za-z0-9]{3,}"
-                                                title="Kombinasi angka dan huruf minimal 3 Karakter" />
-                                            <label for="username">Username</label>
-                                        </div>
-                                        <div class="form-floating mb-4">
-                                            <input class="form-control" id="inputPassword" type="password"
-                                                placeholder="Password" minlength="4" name="password" require />
-                                            <label for="inputPassword">Password</label>
-                                        </div>
-                                        <button type="submit" name="login"
-                                            class="btn btn-primary rounded-pill col-12 my-2 mt-5">Login </button>
-                                    </form>
-                                </div>
-                                <div class="card-footer text-center py-3">
-                                    <div class="text-muted">Copyright &copy; SDIT As-Salam IGS <?= date('Y') ?>
+                            <div class="card-header">
+                                <h2 class="text-center text-primary fw-bold font-weight-light my-4"
+                                    style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                                    LOGIN</h2>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-floating mb-4 mt-5">
+                                        <input class="form-control rounded-pill" id="username" type="text"
+                                            name="username" placeholder="Username" pattern="[A-Za-z0-9]{3,}"
+                                            title="Kombinasi angka dan huruf minimal 3 Karakter" />
+                                        <label for="username">Username</label>
                                     </div>
+                                    <div class="form-floating mb-4 mt-4">
+                                        <input class="form-control rounded-pill" id="inputPassword" type="password"
+                                            placeholder="Password" minlength="4" name="password" require />
+                                        <label for="inputPassword">Password</label>
+                                    </div>
+                                    <a class="d-block text-center" href="">Forgot Password</a>
+                                    <button type="submit" name="login"
+                                        class="btn btn-primary rounded-pill col-12 my-2 mt-5">Login </button>
+                                </form>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <div class="text-primary fw-bold">Copyright &copy; SDIT As-Salam IGS <?= date('Y') ?>
                                 </div>
                             </div>
                         </div>
@@ -80,10 +103,6 @@ $title = "Login | SDIT As-Salam IGS";
                 </div>
             </main>
         </div>
-        <div id="layoutAuthentication_footer">
-            <footer class="py-4 bg-light mt-auto">
-        </div>
-        </footer>
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
