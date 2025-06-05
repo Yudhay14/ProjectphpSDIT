@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_SESSION['ssLogin'])){
-    header ("location:../Project_sekolah_SDIT/loginpage/login.php");
+    header ("location: loginpage/login.php");
     exit;
 }
 

@@ -1,8 +1,8 @@
 <?php
-session_start();
 
-if(!isset($_SESSION['ssLogin'])){
-    header ("location:../Project_sekolah_SDIT/loginpage/login.php");
+session_start();
+if(isset($_SESSION['ssLogin'])){
+    header("location: ../index.php");
     exit;
 }
 

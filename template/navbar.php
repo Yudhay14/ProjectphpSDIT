@@ -8,7 +8,7 @@
                 class="fas fa-bars fa-2x"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <span class="text-white text-capitalize"><?= "Wira Yudha"  ?></span>
+            <span class="text-white text-capitalize"><?= $_SESSION['ssUser']  ?></span>
         </form>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -22,7 +22,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="<?= $main_url?>loginpage/login.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="<?= $main_url?>loginpage/logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
