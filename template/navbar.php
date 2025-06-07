@@ -1,3 +1,9 @@
+<?php
+
+
+
+?>
+
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-custom">
         <!-- Navbar Brand-->
@@ -16,7 +22,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Profile User</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="modal" href="#mdlProfile">Profile User</a></li>
                     <li><a class="dropdown-item" href="<?= $main_url ?>Sekolah/profile-sekolah.php">Profile Sekolah</a>
                     </li>
                     <li>
@@ -26,5 +32,39 @@
                 </ul>
             </li>
         </ul>
+        <?php
+        $username = $_SESSION["ssUser"];
+        $queryUser = mysqli_query($koneksi, "SELECT * FROM tbl_user WHERE username = '$username'");
+        $profile = mysqli_fetch_array($queryUser);
+
+        ?>
 
     </nav>
+    <div class="modal" tabindex="-1" id="mdlProfile">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="<?= $main_url?>asset/image/<?=$profile['foto'] ?>"
+                                    class="img-fluid rounded-start" alt="gambaruser">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

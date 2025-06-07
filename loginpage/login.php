@@ -26,15 +26,13 @@ require_once "../config.php";
 </head>
 <style>
 .bg-body-login {
-    background-image: url("../asset/image/bg-test2.jpg");
+    background-image: url("../asset/image/Welcome.jpg");
 }
 
-.form-control {
-    background-color: transparent !important;
-    border: 2px solid rgba(0, 123, 255, 1);
+input.form-control {
+    border: 2px solid white !important;
     color: white;
-    font-size: 16px;
-    border-radius: 8px;
+    background-color: transparent;
 }
 
 .form-control:focus {
@@ -43,6 +41,10 @@ require_once "../config.php";
     box-shadow: 0 0 6px rgba(0, 123, 255, 0.7);
     color: white;
     outline: none;
+}
+
+.forgotPas:hover {
+    color: orange !important;
 }
 
 .form-control::placeholder {
@@ -55,32 +57,38 @@ input:-webkit-autofill {
     transition: background-color 9999s ease-in-out 0s;
     caret-color: white;
 }
+
+.btn:hover {
+    background-color: antiquewhite !important;
+}
 </style>
 
 <body class="sb-nav-fixed bg-body-login">
     <nav class="sb-topnav navbar navbar-dark">
         <!-- Navbar Brand-->
         <a href="" class="m-3"><input type="image" src="<?= $main_url ?>asset/image/logohome.png" alt=""></a>
-        <a class="navbar-brand text-start fw-bold text-primary">SDIT As-Salam IGS</a>
+        <a class="navbar-brand text-start fw-bold" style="color:white">SDIT As-Salam IGS</a>
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <a href="" style="text-decoration: none;" class="fw-bold px-3">Informasi Sekolah</a>
-            <a href="" style="text-decoration: none;" class="fw-bold px-3">PPDB</a>
+            <a href="" style="text-decoration: none;" class="fw-bold px-3 text-white">Informasi Sekolah</a>
+            <a href="" style="text-decoration: none;" class="fw-bold px-3 text-white">PPDB</a>
         </form>
     </nav>
 
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
-                <div class="container">
-                    <div class="row justify-content-center" style="min-height: 100vh; align-items: center;">
-                        <div class="col-7">
-                            <img src="../asset/image/logologin.png" class="w-55" style="margin-right: 20px;" alt="">
-                        </div>
-                        <div class="col-lg-5">
+                <div class="container px-0">
+                    <div class="row" style="min-height: 100vh; align-items: center;">
+                        <div class="col-4">
                             <div class="card-header">
-                                <h2 class="text-center text-primary fw-bold font-weight-light my-4"
-                                    style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                                    LOGIN</h2>
+                                <div class="d-flex justify-content-center">
+                                    <img src="../asset/image/logohome2.png" alt="gambar_home" style="width: 80px">
+                                </div>
+                                <h2 class="fw-bold"
+                                    style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:white; font-size: 30px;">
+                                    Log In</h2>
+                                <p style="color:orange">Log In untuk dapat mengakses aplikasi sekolah</p>
+                                <hr style="height: 2px; background-color: white; border: none;">
                             </div>
                             <div class="card-body">
                                 <form action="proses-login.php" method="POST">
@@ -95,13 +103,18 @@ input:-webkit-autofill {
                                             placeholder="Password" minlength="4" name="password" require />
                                         <label for="inputPassword">Password</label>
                                     </div>
-                                    <a class="d-block text-center" href="">Forgot Password</a>
-                                    <button type="submit" name="login"
-                                        class="btn btn-primary rounded-pill col-12 my-2 mt-5">Login </button>
+                                    <a class="forgotPas d-block text-center text-white text-decoration-none fw-bold"
+                                        href="">
+                                        <hr>Forgot
+                                        Password
+                                        <hr>
+                                    </a>
+                                    <button type="submit" name="login" class="btn rounded-pill col-12 my-2 mt-5 fw-bold"
+                                        style="background-color:orange">Login </button>
                                 </form>
                             </div>
                             <div class="card-footer text-center py-3">
-                                <div class="text-primary fw-bold">Copyright &copy; SDIT As-Salam IGS <?= date('Y') ?>
+                                <div class=" fw-bold">Copyright &copy; SDIT As-Salam IGS <?= date('Y') ?>
                                 </div>
                             </div>
                         </div>

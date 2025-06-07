@@ -14,7 +14,12 @@ require_once "template/navbar.php";
 require_once "template/sidebar.php";
 
 ?>
+<style>
+body {
+    background-image: url("/asset/image/bg-landing.jpg");
 
+}
+</style>
 <div id="layoutSidenav_content">
     <main class="main-countainer">
         <div class="container-fluid px-4">
