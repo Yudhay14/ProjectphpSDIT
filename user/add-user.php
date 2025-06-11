@@ -57,7 +57,7 @@ if($msg == 'added'){
         <div class="container-fluid px-4">
             <h1 class="mt-4 pt-5">Tambah User</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"><a href="<?= $main_url  ?>">Home</a> / Dashboard</li>
+                <li class="breadcrumb-item active"><a href="<?= $main_url  ?>">Home</a> / Tambah User</li>
             </ol>
             <form action="proses-user.php" method="POST" enctype="multipart/form-data">
                 <?php
@@ -66,12 +66,18 @@ if($msg == 'added'){
                 }
                 ?>
                 <div class="card">
-                    <div class="card-header">
-                        <span class="h5"><i class="fa-solid fa-person-circle-plus"></i> Tambah User</span>
-                        <button type="submit" name="simpan" class="btn btn-primary float-end"><i
-                                class="fa-solid fa-floppy-disk"></i> Simpan</button>
-                        <button type="reset" name="reset" class="btn btn-danger float-end me-3"><i
-                                class="fa-solid fa-xmark"></i> Reset</button>
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-person-circle-plus"></i> Tambah User
+                        </h5>
+                        <div class="ms-auto">
+                            <button type="submit" name="simpan" class="btn btn-primary me-2">
+                                <i class="fa-solid fa-floppy-disk"></i> Simpan
+                            </button>
+                            <button type="reset" name="reset" class="btn btn-danger">
+                                <i class="fa-solid fa-xmark"></i> Reset
+                            </button>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -125,7 +131,7 @@ if($msg == 'added'){
                                 <img src="../asset/image/default.png" alt="" width="30%">
                                 <input type="file" name="image" class="form-control form-control-sm w-50 mt-3"
                                     style="margin-left: 120px;">
-                                <small class="color : #6c757d">Pilih foto dengan max 1mb</small>
+                                <small style="color : #6c757d">Pilih foto dengan max 1mb</small>
                             </div>
                         </div>
                     </div>

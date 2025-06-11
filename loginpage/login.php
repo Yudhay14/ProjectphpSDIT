@@ -94,8 +94,7 @@ input:-webkit-autofill {
                                 <form action="proses-login.php" method="POST">
                                     <div class="form-floating mb-4 mt-5">
                                         <input class="form-control rounded-pill" id="username" type="text"
-                                            name="username" placeholder="Username" pattern="[A-Za-z0-9]{3,}"
-                                            title="Kombinasi angka dan huruf minimal 3 Karakter" />
+                                            name="username" placeholder="Username" />
                                         <label for="username">Username</label>
                                     </div>
                                     <div class="form-floating mb-4 mt-4">

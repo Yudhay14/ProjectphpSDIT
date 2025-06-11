@@ -34,7 +34,7 @@ if(isset($_POST['simpan'])){
         $gambar = 'default.png';
     }
 
-    mysqli_query($koneksi, "INSERT INTO tbl_user VALUES(null, '$username', '$pass','$nama','$alamat','$jabaran','$gambar')");
+    mysqli_query($koneksi, "INSERT INTO tbl_user VALUES(null, '$username', '$pass','$nama','$alamat','$jabatan','$gambar')");
 
     header("location: add-user.php?msg=added");
     return;
