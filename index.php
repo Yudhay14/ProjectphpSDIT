@@ -13,6 +13,8 @@ require_once "template/header.php";
 require_once "template/navbar.php";
 require_once "template/sidebar.php";
 
+$query = mysqli_query($koneksi, "SELECT COUNT(*) AS total_siswa FROM tbl_siswa");
+$data = mysqli_fetch_assoc($query);
 ?>
 <style>
 body {
@@ -32,7 +34,7 @@ body {
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">Jumlah Siswa</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">0 Orang</a>
+                            <a class="small text-white stretched-link" href="#"><?=$data['total_siswa']?></a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>

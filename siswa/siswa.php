@@ -22,13 +22,18 @@ require_once "../template/sidebar.php";
                 <li class="breadcrumb-item active"><a href="<?= $main_url  ?>">Home</a> / Siswa</li>
             </ol>
             <div class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-list"></i> Siswa
-                    <a href="<?=$main_url?>siswa/add-siswa.php" class="btn btn-sm - btn-primary float-end"><i
-                            class="fa-solid fa-plus"></i>Tambah Siswa</a>
+                <div class="card-header d-flex align-items-center">
+                    <span>
+                        <i class="fa-solid fa-list"></i> Siswa
+                    </span>
+                    <div class="ms-auto">
+                        <a href="<?=$main_url?>siswa/add-siswa.php" class="btn btn-sm - btn-primary float-end"><i
+                                class="fa-solid fa-plus"></i>Tambah Siswa</a>
+                    </div>
+
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="datatablesSimple">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -76,10 +81,12 @@ require_once "../template/sidebar.php";
                                 <td align="center"><?=$data['notelp']?></td>
                                 <td align="center"><?=$data['alamat']?></td>
                                 <td align="center">
-                                    <a href="" class="btn btn-sm btn-warning" title="Update-siswa"><i
-                                            class="fa-solid fa-pen"></i></a>
-                                    <a href="" class="btn btn-sm btn-danger" title="Hapus-siswa"><i
-                                            class="fa-solid fa-trash-can"></i></i></a>
+                                    <a href="edit-siswa.php?nis=<?=$data['nis']?>" class="btn btn-sm btn-warning"
+                                        title="Update-siswa"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="hapus-siswa.php?nis=<?=$data['nis']?>&foto=<?=$data['foto']?>"
+                                        class="btn btn-sm btn-danger" title="Hapus-siswa"
+                                        onclick="return confirm('Anda Yakin ingin hapus data ini?')"><i
+                                            class="fa-solid fa-trash-can" title="Hapus Siswa"></i></i></a>
                                 </td>
                             </tr>
                             <?php }?>

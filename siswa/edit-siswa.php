@@ -8,20 +8,17 @@ if(!isset($_SESSION['ssLogin'])){
 }
 
 require_once "../config.php";
-$title= "Tambah Siswa | SDIT As-Salam IGS";
+$title= "Update Siswa | SDIT As-Salam IGS";
 require_once "../template/header.php";
 require_once "../template/navbar.php";
 require_once "../template/sidebar.php";
 
-$querryNIS = mysqli_query($koneksi, "SELECT max(nis) as maxnis FROM tbl_siswa");
-$data = mysqli_fetch_array($querryNIS);
-$maxnis = $data['maxnis'];
+$nis = $_GET['nis'];
 
-$noUrut = (int) substr ($maxnis,3, 3);
-$noUrut++;
+$siswa = mysqli_query($koneksi, "SELECT * FROM tbl_siswa WHERE nis = '$nis'");
+$data = mysqli_fetch_array($siswa);
 
-//gabung NIS dengan nomor dan kita buat 03 / 3 nomor yang di ambil dari no urut
-$maxnis = "NIS".sprintf("%03s", $noUrut);
+
 ?>
 <div id="layoutSidenav_content">
     <main class="main-countainer">
@@ -30,14 +27,14 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item "><a href="../index.php">Home</a></li>
                 <li class="breadcrumb-item "><a href="siswa.php">Siswa</a></li>
-                <li class="breadcrumb-item active">Tambah Siswa</li>
+                <li class="breadcrumb-item active">Update Siswa</li>
             </ol>
             <form action="proses-siswa.php" method="POST" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-header">
-                        <span class="h5 my-2"><i class="fa-solid fa-square-plus"></i> Tambah Siswa</span>
-                        <button type="submit" name="simpan" class="btn btn-primary float-end"><i
-                                class="fa-solid fa-floppy-disk"></i> Simpan</button>
+                        <span class="h5 my-2"><i class="fa-solid fa-square-plus"></i> Update Siswa</span>
+                        <button type="submit" name="update" class="btn btn-primary float-end"><i
+                                class="fa-solid fa-pen-to-square"></i> Update</button>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -48,7 +45,7 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
                                     <div class="col-sm-9">
                                         <input type="text" readonly name="nis"
                                             class="form-control-plaintext border-bottom" style="margin-left: -70px;"
-                                            id="nis" value="<?= $maxnis ?>">
+                                            id="nis" value="<?= $nis ?>">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -56,7 +53,7 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
                                     <label for="nisn" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="nisn" class="form-control-plaintext border-bottom"
-                                            style="margin-left: -70px;" id="nisn" value="">
+                                            style="margin-left: -70px;" id="nisn" value="<?= $data['nisn']?>">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -64,7 +61,7 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
                                     <label for="nis" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="nama" class="form-control-plaintext border-bottom"
-                                            style="margin-left: -70px;" id="nama" value="">
+                                            style="margin-left: -70px;" id="nama" value="<?= $data['nama']?>">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -74,12 +71,18 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
                                         <select name="kelas" id="kelas" class="form-select border-0 border-bottom"
                                             style="margin-left: -70px;" required>
                                             <option value="" selected>--Pilih Kelas--</option>
-                                            <option value="A1">A1</option>
-                                            <option value="A2">A2</option>
-                                            <option value="A3">A3</option>
-                                            <option value="B1">B1</option>
-                                            <option value="B2">B2</option>
-                                            <option value="B3">B3</option>
+                                            <option value="A1" <?= ($data['kelas'] === 'A1') ? 'selected' : '' ?>>A1
+                                            </option>
+                                            <option value="A2" <?= ($data['kelas'] === 'A2') ? 'selected' : '' ?>>A2
+                                            </option>
+                                            <option value="A3" <?= ($data['kelas'] === 'A3') ? 'selected' : '' ?>>A3
+                                            </option>
+                                            <option value="B1" <?= ($data['kelas'] === 'B1') ? 'selected' : '' ?>>B1
+                                            </option>
+                                            <option value="B2" <?= ($data['kelas'] === 'B2') ? 'selected' : '' ?>>B2
+                                            </option>
+                                            <option value="B3" <?= ($data['kelas'] === 'B3') ? 'selected' : '' ?>>B3
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -89,7 +92,7 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
                                     <div class="col-sm-9">
                                         <input type="text" name="notelp"
                                             class="form-control-plaintext border-bottom ps-2"
-                                            style="margin-left: -70px;" id="notelp" value="">
+                                            style="margin-left: -70px;" id="notelp" value="<?= $data['notelp']?>">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -97,12 +100,15 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
                                     <label for="alamat" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9" style="margin-left: -70px;">
                                         <textarea name="alamat" id="alamat" cols="30" rows="3"
-                                            placeholder="Alamat Siswa" class="form-control" required></textarea>
+                                            placeholder="Alamat Siswa" class="form-control"
+                                            required><?= $data['alamat']?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4 text-center px-5">
-                                <img src="../asset/image/default.png" alt="" width="30%" class="mt-4">
+                                <input type="hidden" name="fotolama" value="<?=$data['foto']?>">
+                                <img src="../asset/image/<?=$data['foto']?>" alt="" width="40%" height="40%"
+                                    class="mt-4 rounded-circle">
                                 <input type="file" name="image" class="form-control form-control-sm w-50 mt-3"
                                     style="margin-left: 120px;">
                                 <small style="color : #6c757d">Pilih foto dengan max 1mb</small>
