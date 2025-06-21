@@ -28,7 +28,7 @@
                         <div class="sb-nav-link-icon text-primary"><i class="fa-solid fa-chalkboard-user"></i></div>
                         Guru
                     </a>
-                    <a class="nav-link" href="<?= $main_url  ?>">
+                    <a class="nav-link" href="<?= $main_url  ?>pelajaran/pelajaran.php">
                         <div class="sb-nav-link-icon text-primary"><i class="fa-solid fa-book"></i></div>
                         Mata Pelajaran
                     </a>

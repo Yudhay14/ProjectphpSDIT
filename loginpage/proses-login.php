@@ -4,7 +4,7 @@ session_start();
 
 require_once "../config.php";
 
-if(isset($_POST['login'])){
+if(isset($_POST['login'])){ 
     $username = trim(htmlspecialchars($_POST['username']));
     $password = trim(htmlspecialchars($_POST['password']));
 

@@ -13,8 +13,10 @@ require_once "template/header.php";
 require_once "template/navbar.php";
 require_once "template/sidebar.php";
 
-$query = mysqli_query($koneksi, "SELECT COUNT(*) AS total_siswa FROM tbl_siswa");
-$data = mysqli_fetch_assoc($query);
+$querySiswa = mysqli_query($koneksi, "SELECT COUNT(*) AS total_siswa FROM tbl_siswa");
+$queryGuru = mysqli_query($koneksi, "SELECT COUNT(*) AS total_guru FROM guru");
+$dataS = mysqli_fetch_assoc($querySiswa);
+$dataG = mysqli_fetch_assoc($queryGuru);
 ?>
 <style>
 body {
@@ -34,7 +36,7 @@ body {
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">Jumlah Siswa</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#"><?=$data['total_siswa']?></a>
+                            <a class="small text-white stretched-link" href="#"><?=$dataS['total_siswa']?></a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
@@ -43,7 +45,7 @@ body {
                     <div class="card bg-warning text-white mb-4">
                         <div class="card-body">Jumlah Guru</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">0 Orang</a>
+                            <a class="small text-white stretched-link" href="#"><?=$dataG['total_guru']?></a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>

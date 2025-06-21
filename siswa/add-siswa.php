@@ -74,12 +74,18 @@ $maxnis = "NIS".sprintf("%03s", $noUrut);
                                         <select name="kelas" id="kelas" class="form-select border-0 border-bottom"
                                             style="margin-left: -70px;" required>
                                             <option value="" selected>--Pilih Kelas--</option>
-                                            <option value="A1">A1</option>
-                                            <option value="A2">A2</option>
-                                            <option value="A3">A3</option>
-                                            <option value="B1">B1</option>
-                                            <option value="B2">B2</option>
-                                            <option value="B3">B3</option>
+                                            <option value="1A">1A</option>
+                                            <option value="1B">1B</option>
+                                            <option value="2A">2A</option>
+                                            <option value="2B">2B</option>
+                                            <option value="3A">3A</option>
+                                            <option value="3B">3B</option>
+                                            <option value="4A">4A</option>
+                                            <option value="4B">4B</option>
+                                            <option value="5A">5A</option>
+                                            <option value="5B">5B</option>
+                                            <option value="6A">6A</option>
+                                            <option value="6B">6B</option>
                                         </select>
                                     </div>
                                 </div>

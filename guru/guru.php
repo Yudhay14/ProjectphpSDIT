@@ -31,42 +31,65 @@ require_once "../template/sidebar.php";
                                 class="fa-solid fa-plus"></i> Tambah Data</a>
                     </div>
                 </div>
-                <table class="table table-light table-striped">
-                    <thead class="table-primary">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Foto</th>
-                            <th scope="col">ID Guru</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Pendidikan</th>
-                            <th scope="col">Agama</th>
-                            <th scope="col">No Telp</th>
-                            <th scope="col">Alamat</th>
-                            <th scope="col">Operator</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Foto</td>
-                            <td>ID Guru</td>
-                            <td>Nama</td>
-                            <td>Pendidikan</td>
-                            <td>Agama</td>
-                            <td>No Telp</td>
-                            <td>Alamat</td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-warning" title="Update-guru"><i
-                                        class="fa-solid fa-pen"></i></a>
-                                <!-- Modal Trigger -->
-                                <a href="#" class="btn btn-sm btn-danger" title="Hapus Siswa" data-bs-toggle="modal"
-                                    data-bs-target="#modalKonfrm">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="card-body">
+                    <table class="table table-light table-striped text-center" id="datatablesSimple">
+                        <thead class="table-primary text-center">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">
+                                    <center>Foto</center>
+                                </th>
+                                <th scope="col">
+                                    <center>ID Guru</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Nama</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Pendidikan</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Agama</center>
+                                </th>
+                                <th scope="col">
+                                    <center>No Telp</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Alamat</center>
+                                </th>
+                                <th scope="col">
+                                    <center>Operasi</center>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            $querryGuru = mysqli_query($koneksi, "SELECT * FROM guru");
+                            while($data = mysqli_fetch_array($querryGuru)){ ?>
+                            <tr>
+                                <th scope="row"><?=$no++?></th>
+                                <td align="center"><img src="../asset/image/<?=$data['foto']?>" class="rounded-circle"
+                                        alt="foto guru" width="60px" height="60px"></td>
+                                <td align="center"><?=$data['id_guru']?></td>
+                                <td align="center"><?=$data['nama']?></td>
+                                <td align="center"><?=$data['pendidikan']?></td>
+                                <td align="center"><?=$data['agama']?></td>
+                                <td align="center"><?=$data['no_tlp']?></td>
+                                <td align="center"><?=$data['alamat']?></td>
+                                <td align="center">
+                                    <a href="edit-guru.php?id_guru=<?=$data['id_guru']?>" class="btn btn-sm btn-warning"
+                                        title="Update-guru"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="#" class="btn btn-sm btn-danger btn-hapus" data-id="<?=$data['id_guru']?>"
+                                        data-foto="<?=$data['foto']?>" data-bs-toggle="modal"
+                                        data-bs-target="#modalKonfrm" title="Hapus-guru">
+                                        <i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                            <?php }?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
@@ -78,16 +101,34 @@ require_once "../template/sidebar.php";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Anda Yakin ingin hapus data ini?</p>
+                    <p>Anda Yakin ingin hapus data guru ini?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Hapus</button>
+                    <button type="button" class="btn btn-primary" id="btnConfirmHapus">Hapus</button>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+    let idGuru = '';
+    let fotoGuru = '';
 
+    document.querySelectorAll('.btn-hapus').forEach(function(el) {
+        el.addEventListener('click', function() {
+            idGuru = this.getAttribute('data-id');
+            fotoGuru = this.getAttribute('data-foto');
+        });
+    });
+
+    document.getElementById('btnConfirmHapus').addEventListener('click', function() {
+        if (idGuru && fotoGuru !== null) {
+            window.location.href = `hapus-guru.php?id_guru=${idGuru}&foto=${fotoGuru}`;
+        } else {
+            alert("Data tidak lengkap!");
+        }
+    });
+    </script>
     <?php 
 
 require_once "../template/footer.php";
